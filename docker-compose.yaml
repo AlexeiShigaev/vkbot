@@ -1,0 +1,7 @@
+services:
+  vk_bot:
+    build:
+      context: .
+      dockerfile: ./vkbot/Dockerfile
+    container_name: vk_bot
+    restart: always
