@@ -31,7 +31,7 @@ KEYBOARD = (
 async def send_edit_message(peer_id, photo_url, text):
     # Загружаем фото
     photo = await photo_uploader.upload(
-        file_source="img/" + photo_url,
+        file_source="vkbot/img/" + photo_url,
         peer_id=peer_id,
     )
 
@@ -151,7 +151,7 @@ async def start_handler(message: Message, item: Optional[str] = None):
 
         # Загружаем фото
         photo = await photo_uploader.upload(
-            file_source="img/" + category.img_url,
+            file_source="vkbot/img/" + category.img_url,
             peer_id=message.peer_id,
         )
 
@@ -180,7 +180,6 @@ async def btn_prev_handler(event: MessageEvent):
         await call_btn_next_prev(event)
 
     
-
 
 # @bot.on.message()
 # async def std_mess_handler(message: Message, item: Optional[str] = None):
