@@ -2,7 +2,7 @@ import os, dotenv
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
-from .models import Base, Category, Product
+from models import Base, Category, Product
 
 dotenv.load_dotenv()
 engine = create_engine(os.getenv('DB_URL'), echo=False)

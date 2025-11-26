@@ -4,4 +4,4 @@ services:
       context: .
       dockerfile: ./vkbot/Dockerfile
     container_name: vk_bot
-    restart: always
+#    restart: always

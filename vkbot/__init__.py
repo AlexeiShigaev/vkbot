@@ -3,6 +3,6 @@ import logging
 
 
 dotenv.load_dotenv()
-logging.getLogger("vkbottle").setLevel("INFO")
+logging.getLogger("vkbottle").setLevel("DEBUG")
 
 

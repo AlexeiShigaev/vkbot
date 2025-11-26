@@ -11,4 +11,5 @@ COPY ./vkbot /vkbot
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Команда для запуска бота
-CMD ["python", "-m /vkbot"]
+CMD ["python", "main.py"]
+
