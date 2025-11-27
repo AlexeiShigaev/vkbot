@@ -6,8 +6,8 @@ from vkbottle.tools.formatting import Formatter
 from vkbottle import CtxStorage, GroupEventType, GroupTypes, Callback
 from vkbottle.tools.uploader import PhotoMessageUploader
 from vkbottle import Keyboard, Callback, KeyboardButtonColor
-from .states import States
-from .db import get_next_category_by_id, get_prev_category_by_id, get_next_prod_by_id, get_prev_prod_by_id
+from states import States
+from db import get_next_category_by_id, get_prev_category_by_id, get_next_prod_by_id, get_prev_prod_by_id
 
 
 bot = Bot(os.getenv('VK_GROUP_TOKEN'))
