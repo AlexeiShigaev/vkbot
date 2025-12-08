@@ -338,14 +338,7 @@ class BotController:
                 insert_new_peer(self.peers[event.peer_id].toJSON())
             else:
                 # Создаем экземпляр состояния сохраненного типа
-                self.peers[event.peer_id] = globals()["StartMessageState"](
-                    {   'peer_id': event.peer_id,
-                        'last_mess_id': event.last_mess_id,
-                        'category_id': 0,
-                        'product_id': 0
-                    }
-                )
-                # self.peers[event.peer_id] = globals()[result.type_state](result.toJSON())
+                self.peers[event.peer_id] = globals()[result.type_state](result.toJSON())
                 
         # пир есть, даем ему команду
         if event.last_mess_id:
