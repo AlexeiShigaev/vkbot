@@ -8,7 +8,7 @@ dotenv.load_dotenv()
 engine = create_engine(os.getenv('DB_URL'), echo=False)
 Session = sessionmaker(bind=engine)
 
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 
 def get_next_category_by_id(id: int):
