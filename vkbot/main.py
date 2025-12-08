@@ -113,26 +113,26 @@ class UserState:
 
     
     async def handler_btn_prev(self, event: BotEvent):
-        # ЗЗаглушка.
+        # Заглушка.
         return ""
         
     async def handler_btn_next(self, event: BotEvent):
-        # ЗЗаглушка.
+        # Заглушка.
         return ""
     
     async def handler_btn_choice(self, event: BotEvent):
-        # ЗЗаглушка.
+        # Заглушка.
         return ""
 
 
     async def handler_btn_back(self, event: BotEvent):
-        # ЗЗаглушка.
+        # Заглушка.
         return ""
 
     
     
 class StartMessageState(UserState):
-    
+    """ Условное состояние по команде /start. Не факт что нужное. или нужно перепродумать его работу."""
     def __init__(self, params: dict):
         super().__init__(params)
         
@@ -156,7 +156,9 @@ class StartMessageState(UserState):
         )
         
         
+        
 class SelectCategoryState(UserState):
+    """ Набор реакций на нажатия разных кнопок при листании категорий """
     def __init__(self, params: dict):
         super().__init__(params)
         
@@ -199,7 +201,7 @@ class SelectCategoryState(UserState):
     
 
 class SelectProductState(UserState):
-    
+    """ Набор реакций на листания или выбор/выход в списке продуктов """
     def __init__(self, params: dict):
         super().__init__(params)
         
@@ -277,7 +279,7 @@ class SelectProductState(UserState):
         
 
 class ChoiceProductState(UserState):
-    
+    """ Состояние - выбор продукта. Кнопки все те же, важно сделать выхед на предыдущий уровень. """
     def __init__(self, params: dict):
         super().__init__(params)
         
@@ -317,9 +319,9 @@ class ChoiceProductState(UserState):
     
     
 class BotController:
+    """ Класс обработчика событий машины состояния. """
     peers = {}
         
-    
     async def processor(self, event: BotEvent):
         # история, когда нет пира ни в пирах, ни в базе.
         if event.peer_id not in self.peers:
@@ -397,12 +399,6 @@ async def btn_press_handler(event: MessageEvent):
     
 
 
-# @bot.on.message()
-# async def std_mess_handler(message: Message, item: Optional[str] = None):
-#     print("!!!!!!!!!!!!!!!!!!!!!!!!!")
-#     print(message, "\n", item)
-#     print("!!!!!!!!!!!!!!!!!!!!!!!!!")
-#     await message.answer("Я такого не понимаю.\nИспользуйте команду /start")
 
 
 bot.run_forever()
