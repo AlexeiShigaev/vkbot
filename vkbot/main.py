@@ -236,47 +236,7 @@ class SelectProductState(UserState):
         await controller.processor(event)
         
         
-    async def handler_btn_back(self, event: BotEvent):
-        controller.set_state(
-            SelectCategoryState(self.toJSON())
-        )
-        event.command = "btn_prev"
-        await controller.processor(event)
-        
-        
-    async def handle(self, event: MessageEvent):
-        command = event.object.payload["command"]
-        
-        if command == "btn_choice":
-            controller.set_state(
-                ChoiceProductState(self.toJSON())
-            )
-            event.object.payload["command"] = "btn_next"
-            await controller.processor(event)
-            return
-        
-        if command == "btn_back":
-            controller.set_state(
-                SelectCategoryState(self.toJSON())
-            )
-            event.object.payload["command"] = "btn_prev"
-            await controller.processor(event)
-            return
-        
-        if event.object.payload["command"] == "btn_next":
-            prod = get_next_prod_by_id(self.category_id, self.product_id)
-        else:
-            prod = get_prev_prod_by_id(self.category_id, self.product_id)
-        
-        self.product_id = prod.id
-        
-        text = Formatter("Категория: {:bold}\nНаименование: {:bold}\nОписание: {:bold}\nЦена: {:bold}") \
-            .format(prod.category_rel.name, prod.name, prod.description, prod.price)
 
-        await self.send_edit_message(
-            prod.img_url, text
-        )
-        
 
 class ChoiceProductState(UserState):
     """ Состояние - выбор продукта. Кнопки все те же, важно сделать выхед на предыдущий уровень. """
@@ -318,6 +278,7 @@ class ChoiceProductState(UserState):
         await controller.processor(event)
     
     
+    
 class BotController:
     """ Класс обработчика событий машины состояния. """
     peers = {}
@@ -351,7 +312,7 @@ class BotController:
         
     
     def set_state(self, new_state: UserState):
-        # Сохраняем новый стейт
+        # Сохраняем новый стейт в базу
         self.peers[new_state.peer_id] = new_state
         
         update_user_state(new_state.toJSON())
@@ -390,8 +351,6 @@ async def btn_press_handler(event: MessageEvent):
     )
 
     
-
-
 
 
 bot.run_forever()
