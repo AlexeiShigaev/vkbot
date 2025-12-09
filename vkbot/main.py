@@ -150,7 +150,7 @@ class StartMessageState(UserState):
             Formatter("Категория: {:bold}").format(category.name)
         )
         
-        # Переключамся на выбор категории.
+        # Переключаемся на выбор категории.
         controller.set_state(
             SelectCategoryState(self.toJSON())
         )
@@ -245,7 +245,7 @@ class SelectProductState(UserState):
 
 
 class ChoiceProductState(UserState):
-    """ Состояние - выбор продукта. Кнопки все те же, важно сделать выхед на предыдущий уровень. """
+    """ Состояние - выбор продукта. Кнопки все те же, важно сделать выход на предыдущий уровень. """
     def __init__(self, params: dict):
         super().__init__(params)
         

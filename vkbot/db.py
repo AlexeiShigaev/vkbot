@@ -1,7 +1,7 @@
 import os, dotenv
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, joinedload
+from sqlalchemy.orm import sessionmaker
 from models import Base, Category, Product, User
 
 dotenv.load_dotenv()
