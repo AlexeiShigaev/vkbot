@@ -235,6 +235,12 @@ class SelectProductState(UserState):
         event.command = "btn_next"
         await controller.processor(event)
         
+    async def handler_btn_back(self, event: BotEvent):
+        controller.set_state(
+            SelectCategoryState(self.toJSON())
+        )
+        event.command = "btn_next"
+        await controller.processor(event)
         
 
 
